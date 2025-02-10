@@ -25,7 +25,7 @@ Con `ctrl+w`, buscamos `eht0` para configurar nuestra interface de red ya que es
 
 Volvemos a usar `ctrl+w` y buscamos `HOME_NET` y cambiamos la IP de la red a la que estamos monitorizando.Podemos utilizar el comando `ip a` para obtener la IP de nuestra interfaz de red.
 
-De nuevo, volvemos a usar `ctrl+w` y buscamos `/var/log/suricata/` y podemos cambiar el directorio donde se guardarán los logs de Suricata.En mi caso vamos a dejarlo en `/var/log/suricata/`.
+De nuevo, volvemos a usar `ctrl+w` y buscamos `/var/log/suricata/` y podemos cambiar el directorio donde se guardarán los logs de Suricata. En mi caso vamos a dejarlo en `/var/log/suricata/`.
 
 Guardamos los cambios y actualizamos Suricata.
 ```bash
