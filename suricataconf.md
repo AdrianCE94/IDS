@@ -262,3 +262,11 @@ sudo systemctl start suricata-monitor
 sudo systemctl status suricata-monitor
 journalctl -u suricata_alerta.service #ver logs
 ```
+### crear Bot para Telegram y obtener id
+
+1. Crear un bot en Telegram con botfather
+2. Obtener el token
+3. Obtener el id del chat
+   - Abrir el chat con el bot en Telegram y enviar un mensaje
+   - peticion curl -s https://api.telegram.org/bot<tu_token>/getUpdates
+4. Reemplazar el token y el chat id en el script
