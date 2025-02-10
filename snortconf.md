@@ -5,7 +5,7 @@ Description:    Ubuntu 24.04.1 LTS
 Release:        24.04
 Codename:       noble
 
-![ids](/img/ids.png)
+![ids](/img/piggi.png)
 
 > [!TIP]
 >Las reglas personalizadas para snort se encuentran en el archivo `local.rules` de este repositorio.Puedes usar el archivo para probar las reglas antes de añadirlas a la configuración.
