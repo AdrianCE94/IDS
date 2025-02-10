@@ -160,10 +160,10 @@ LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-  ```
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable snort-ids
-    sudo systemctl start snort-ids
-    sudo systemctl status snort-ids
-    ```
+```
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable snort-ids
+sudo systemctl start snort-ids
+sudo systemctl status snort-ids
+ ```
