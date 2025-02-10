@@ -5,7 +5,7 @@
 <table>
   <tr>
     <td>
-      <img src="/img/schema.png" alt="Esquema IDS" width="400">
+      <img src="/img/schema.png" alt="Esquema IDS" width="600">
     </td>
     <td>
     Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
