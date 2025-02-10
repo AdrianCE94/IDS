@@ -19,7 +19,7 @@ sudo apt install snort -y
 
 Si no lo introduces en este paso, puedes editarlo más tarde en la configuración -->
 
-````bash
+```bash
 sudo nano /etc/snort/snort.conf
 
 # Configura tu red
