@@ -227,10 +227,10 @@ if __name__ == "__main__":
 ```bash
 sudo apt update
 sudo apt install python3-pip
-pip3 install requests
+sudo apt install python3-requests
 ```
 ```bash	
- nano /usr/local/bin/suricata-monitor.py
+ sudo nano /usr/local/bin/suricata-monitor.py
  chmod +x /usr/local/bin/suricata-monitor.py
 ```
 ## Crear Servicio
@@ -243,13 +243,8 @@ Description=Servicio de alerta Suricata por Telegram
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /ruta/del/script/suricata_alerta.py
-Restart=always
-User=tu_usuario
-Group=tu_grupo
-WorkingDirectory=/ruta/del/script/
-StandardOutput=journal
-StandardError=journal
+ExecStart=/usr/bin/python3 /usr/local/bin/suricata-monitor.py
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
