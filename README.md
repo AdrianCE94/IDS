@@ -50,7 +50,7 @@ Los IDS detectan diferentes tipos de ataques, como:
 ### **Suricata**
 
 > [!NOTE]
-> :books: Documentación de Snort: [https://suricata.io/](https://suricata.io/)
+> :books: Documentación de Suricata: [https://suricata.io/](https://suricata.io/)
 
 <p align="center">
   <img src="/img/suricata.png" alt="suricata" width="250">
