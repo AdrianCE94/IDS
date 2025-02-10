@@ -4,9 +4,20 @@
 
 Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
 
+<p align="center">
+  <img src="/img/schema.png" alt="schema" width="300">
+</p>
 ## ¿Cómo funciona un IDS?
 
 Un IDS funciona analizando los datos que se envían a través de la red, y detectando posibles ataques. Esto puede hacerse de varias maneras, como analizar el tráfico de red, analizar los paquetes de datos, o analizar el contenido de los archivos.
+
+El funcionamiento de estas herramientas se basa en el análisis pormenorizado del tráfico de red, el cual al entrar al analizador es comparado con firmas de ataques conocidos, o comportamientos sospechosos, como puede ser el escaneo de puertos, paquetes malformados, etc. El IDS no solo analiza qué tipo de tráfico es, sino que también revisa el contenido y su comportamiento.
+
+Normalmente esta herramienta se integra con un firewall. El detector de intrusos es incapaz de detener los ataques por sí solo, excepto los que trabajan conjuntamente en un dispositivo de puerta de enlace con funcionalidad de firewall, convirtiéndose en una herramienta muy poderosa ya que se une la inteligencia del IDS y el poder de bloqueo del firewall, al ser el punto donde forzosamente deben pasar los paquetes y pueden ser bloqueados antes de penetrar en la red.
+
+Los IDS suelen disponer de una base de datos de “firmas” de ataques conocidos.
+
+Dichas firmas permiten al IDS distinguir entre el uso normal del PC y el uso fraudulento, y/o entre el tráfico normal de la red y el tráfico que puede ser resultado de un ataque o intento del mismo.
 
 ## ¿Qué tipos de ataques se detectan?
 
@@ -16,19 +27,11 @@ Los IDS detectan diferentes tipos de ataques, como:
 - Ataques de intrusión de servicios: esto incluye ataques como la inyección de código en los servicios, la inyección de archivos, entre otros.
 - Ataques de intrusión de red: esto incluye ataques como la inyección de tráfico, la inyección de paquetes de datos, entre otros.
 
-## ¿Cómo se implementa un IDS?
-
-Los IDS se implementan de varias maneras, como:
-
-- Analizando el tráfico de red: esto se hace analizando los paquetes de datos que se envían a través de la red, y detectando posibles ataques.
-- Analizando los paquetes de datos: esto se hace analizando los paquetes de datos que se envían a través de la red, y detectando posibles ataques.
-- Analizando el contenido de los archivos: esto se hace analizando el contenido de los archivos que se encuentran en el sistema, y detectando posibles ataques.
-
 ## Snort vs Suricata
 
 ### Snort
 <p align="center">
-  <img src="/img/snort.png" alt="suricata" width="300">
+  <img src="/img/snort.png" alt="snort" width="300">
 </p>
 
 **Snort** es un Sistema de Detección y Prevención de Intrusos (IDS/IPS) basado en firmas, desarrollado por Cisco. Se usa para analizar paquetes de red en tiempo real y detectar amenazas mediante reglas personalizadas. Es ampliamente utilizado en redes pequeñas y medianas debido a su facilidad de uso.
