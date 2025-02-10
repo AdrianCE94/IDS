@@ -36,7 +36,7 @@ sudo suricata-update
 Las reglas se encuentran en el archivo `usr/share/suricata/rules/`. Estas reglas podemos cargarlas  en Suricata para detectar tráfico específico.Por tanto vamos a crear nuestras propias reglas y luego cargarlas en Suricata. Importante utilizar la extensión `.rules` para que Suricata pueda leer las reglas.
 
 ```bash	
-sudo nano usr/share/suricata/rules/misreglas.rules
+sudo nano /usr/share/suricata/rules/misreglas.rules
 ```
 Aquí podemos agregar reglas personalizadas para detectar tráfico específico. Por ejemplo, 
 
