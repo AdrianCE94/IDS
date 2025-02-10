@@ -35,7 +35,7 @@ Los IDS detectan diferentes tipos de ataques, como:
 - Ataques de intrusión de red: esto incluye ataques como la inyección de tráfico, la inyección de paquetes de datos, entre otros.
 
 <p align="center">
-  <img src="/img/ids.png" alt="ids" width="450
+  <img src="/img/ids.png" alt="ids" width="350">
 </p>
 
 ## Snort vs Suricata
