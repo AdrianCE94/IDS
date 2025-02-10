@@ -115,4 +115,4 @@ sudo nmap -p- -sS -sCV -T4 -Pn -n -vvv ip_servidor
 sudo nmap -sS -Pn -T1 --scan-delay 500ms --max-retries 1 --max-scan-delay 1000ms -f -p- ip_servidor
 ```
 
-Aqui minimizamos el tiempo de escaneo y la cantidad de intentos de conexión y reducimos el ruido de nmap.Nos va a ir mas lentop el escaneo, pero vamos a ser indetectables para Suricata.
+Aqui maximizamos el tiempo de escaneo y la cantidad de intentos de conexión y reducimos el ruido de nmap. Nos va a ir mas lentop el escaneo, pero vamos a ser indetectables para Suricata.
