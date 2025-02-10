@@ -21,7 +21,7 @@ para configurar Suricata, abre el archivo de configuración en el siguiente dire
 ```bash
 sudo nano /etc/suricata/suricata.yaml
 ```
-Con `ctrl+w`, buscamos `eht0` para configurar nuestra interface de red ya que esta es la que viene por defecto y la cambiaremos a la que tenemos.
+Con `ctrl+w`, buscamos `eth0` para configurar nuestra interface de red ya que esta es la que viene por defecto y la cambiaremos a la que tenemos.
 
 Volvemos a usar `ctrl+w` y buscamos `HOME_NET` y cambiamos la IP de la red a la que estamos monitorizando.Podemos utilizar el comando `ip a` para obtener la IP de nuestra interfaz de red.
 
