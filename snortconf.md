@@ -8,7 +8,7 @@ sudo apt update
 sudo apt install snort -y
 ```
 > [!WARNING]
-> Durante la instalación, te pedirá configurar la IP de la máquina. Puedes ingresarl a IP privada de la instancia o el rango de red en el que estará monitoreando tráfico.
+> Durante la instalación, te pedirá configurar la IP de la máquina. Puedes ingresar la IP privada de la instancia o el rango de red en el que estará monitoreando tráfico.
 
 Si no lo introduces en este paso, puedes editarlo más tarde en la configuración.
 
