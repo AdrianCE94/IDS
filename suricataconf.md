@@ -5,7 +5,7 @@ Description:    Ubuntu 24.04.1 LTS
 Release:        24.04
 Codename:       noble
 
- <img src="/img/suricatita.png" alt="ids2" width="500
+ <img src="/img/suricatita.png" alt="ids2" width="500">
 
 # Instalación de Suricata
 
