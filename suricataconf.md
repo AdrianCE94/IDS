@@ -144,3 +144,81 @@ Despues de añadir todas las reglas, recuerda que debes Guardamos los cambios y 
 sudo systemctl restart suricata
 ```
 Puedes utilizar el fichero `misreglas.rules` y el fichero de configuración de suricata `ricata.yaml` que se encuentra en este repositorio para probar y securizar tu repositorio
+
+# Script para automatizar el monitoreo
+
+Para automatizar el monitoreo de Suricata, podemos crear un script que se ejecutará automáticamente en segundo plano con un servicio  en systemd. Este script se encargará de guardar los logs de Suricata en un directorio específico cada día y también de generar un informe de alertas para enviarlo por telegram.
+
+- ventajas de python para automatizar el monitoreo de Suricata:
+
+✅ Código más limpio: sin tantos comandos Bash.
+✅ Menos dependencias: No necesita awk, cat, curl, ni eval.
+✅ Manejo de errores mejorado: si el archivo no existe, Python no falla.
+✅ Más seguro: evita posibles problemas con eval en Bash.
+
+- **¿Systemd o Cron?**
+
+---
+| Método  | ¿Cuándo usarlo? | Ventajas | Desventajas |
+|---------|----------------|----------|-------------|
+| **systemd** | Para ejecutar el script constantemente en segundo plano | Se reinicia automáticamente si falla, inicia al encender el sistema | Configuración más técnica |
+| **cron** | Para ejecutar el script cada cierto tiempo (ej. cada minuto) | Fácil de configurar | No es en tiempo real, no reinicia si falla |
+
+---
+
+📌 Explicación del flujo del script
+
+📜 Script
+
+Si hay una nueva alerta en fast.log, el script genera Alerta.txt y lo manda por Telegram.
+Si no hay cambios en fast.log, el script simplemente sigue monitoreando en espera de nuevas alertas.
+
+```python
+import os
+import requests
+from datetime import datetime
+
+# 📌 Configuración
+LOG_FILE = "/var/log/suricata/fast.log"
+MENSAJE_LOG = "/var/log/suricata/Alerta.txt"
+BACKUP_DIR = "/var/log/suricata/copias_fast"
+
+TELEGRAM_BOT_TOKEN = "Escribe-tu-token"
+CHAT_ID = "Escribe-tu-chat-id"
+TELEGRAM_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
+
+def obtener_ultimas_alertas():
+    """Lee el contenido del log de Suricata"""
+    try:
+        with open(LOG_FILE, "r") as f:
+            return f.readlines()
+    except FileNotFoundError:
+        return []
+
+def enviar_alerta(mensaje):
+    """Envía el mensaje a Telegram"""
+    with open(MENSAJE_LOG, "w") as f:
+        f.writelines(mensaje)
+
+    with open(MENSAJE_LOG, "rb") as file:
+        requests.post(TELEGRAM_URL, data={"chat_id": CHAT_ID, "caption": "🚨 Nuevas alertas de Suricata"}, files={"document": file})
+
+def hacer_backup():
+    """Copia el log y lo limpia"""
+    fecha_actual = datetime.now().strftime("%Y-%m-%d")
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    os.system(f"cp {LOG_FILE} {BACKUP_DIR}/copia.{fecha_actual}")
+    open(LOG_FILE, "w").close()  # Limpiar el log después del backup
+
+def main():
+    alertas = obtener_ultimas_alertas()
+    if alertas:
+        enviar_alerta(alertas)
+        hacer_backup()
+        print("✅ Alerta enviada y log respaldado.")
+    else:
+        print("🔍 No hay nuevas alertas.")
+
+if __name__ == "__main__":
+    main()
+```
