@@ -83,3 +83,82 @@ Busca la línea:
 y cámbiala si deseas otro directorio.
 
 
+# Como Probar Snort
+
+Una vez que hayas configurado Snort, puedes probar su funcionadad con un ataque de intrusión de red. Para ello, puedes usar las siguientes sentencias en la terminal:
+
+> [!NOTE]
+> NO LO OLVIDES REINICIAR EL SERVICIO,`sudo systemctl restart snort`
+
+## En otra terminal o máquina
+```bash	
+ping <IP-de-tu-máquina-con-snort>
+```
+## Instala nmap si no lo tienes y haz un escaneo
+```bash	
+sudo apt install nmap
+nmap <IP-de-tu-máquina-con-snort>
+```
+## Intenta conectarte varias veces con una contraseña incorrecta
+ssh usuario@<IP-de-tu-máquina-con-snort>
+## Captura las alertas
+```bash
+sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
+sudo cat /var/log/snort/alert
+```
+# TRUCO
+Cuando ejecutas Snort en modo monitor se queda en primer plano. Hay varias formas de manejarlo:
+
+- **Ejecutar en segundo plano usando &:**
+    ```bash
+    sudo snort -A console -q -c /etc/snort/snort.conf -i eth0 &
+    ```
+- **Instalar screen**
+  ```bash
+  sudo apt install screen
+  ```
+   Crear una nueva sesión
+  ```bash
+  screen -S snort
+  ```
+  Ejecutar Snort
+  ```bash
+  sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
+  ````
+  Despegar la sesión: Presiona Ctrl+A y luego D
+  Para volver a la sesión:
+  ```bash
+  screen -r snort 
+  ```
+
+- **Crear un servicio**
+ 
+  ```bash
+  sudo nano /etc/systemd/system/snort.service
+  ```
+  ```bash
+      [Unit]
+    Description=Snort NIDS Daemon
+    After=network.target
+
+    [Service]
+    Type=simple
+    ExecStart=/usr/sbin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+    ````
+    ```bash
+    # Recargar servicios
+    sudo systemctl daemon-reload
+
+    # Habilitar el servicio
+    sudo systemctl enable snort
+
+    # Iniciar el servicio
+    sudo systemctl start snort
+
+    # Verificar estado
+    sudo systemctl status snort
+    ```
