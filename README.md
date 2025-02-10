@@ -39,7 +39,7 @@ Los IDS detectan diferentes tipos de ataques, como:
 ### **Snort**
 
 > [!NOTE]
-> Documentación de Snort: [https://www.snort.org/](https://www.snort.org/)
+> :books: Documentación de Snort: [https://www.snort.org/](https://www.snort.org/)
 
 <p align="center">
   <img src="/img/snort.png" alt="snort" width="300">
@@ -50,7 +50,7 @@ Los IDS detectan diferentes tipos de ataques, como:
 ### **Suricata**
 
 > [!NOTE]
-> Documentación de Snort: [https://www.snort.org/](https://suricata.io/)
+> :books: Documentación de Snort: [https://suricata.io/](https://suricata.io/)
 
 <p align="center">
   <img src="/img/suricata.png" alt="suricata" width="250">
