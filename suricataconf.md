@@ -109,7 +109,7 @@ sudo nmap -p- -sS -sCV -T4 -Pn -n -vvv ip_servidor
 ```
 
 >[!NOTE]
->Desde el punto de vista de la ciberseguridad,Suricata es una herramienta que se utiliza para detectar posibles ataques,pero si usamos bien nmapdriamos optimizarlo para saltarnos esta norma y no ser detectados. 
+>Desde el punto de vista de la ciberseguridad, Suricata es una herramienta que se utiliza para detectar posibles ataques,pero si usamos bien nmap podemos optimizarlo para saltarnos esta norma y no ser detectados. 
 
 ```bash
 sudo nmap -sS -Pn -T1 --scan-delay 500ms --max-retries 1 --max-scan-delay 1000ms -f -p- ip_servidor
