@@ -1,15 +1,17 @@
 # IDS (Intrusion Detection System)
-![schema](/img/schema.png)
+
 ## ¿Qué es un IDS?
+
+<p align="right">
+  <img src="/img/schema.png" alt="Esquema IDS" width="400">
+</p>
 
 Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
 
 
 ## ¿Cómo funciona un IDS?
 
-Un IDS funciona analizando los datos que se envían a través de la red, y detectando posibles ataques. Esto puede hacerse de varias maneras, como analizar el tráfico de red, analizar los paquetes de datos, o analizar el contenido de los archivos.
-
-El funcionamiento de estas herramientas se basa en el análisis pormenorizado del tráfico de red, el cual al entrar al analizador es comparado con firmas de ataques conocidos, o comportamientos sospechosos, como puede ser el escaneo de puertos, paquetes malformados, etc. El IDS no solo analiza qué tipo de tráfico es, sino que también revisa el contenido y su comportamiento.
+El funcionamiento de estas herramientas se basa en el análisis  del tráfico de red, el cual al entrar al analizador es comparado con firmas de ataques conocidos, o comportamientos sospechosos, como puede ser el escaneo de puertos, paquetes malformados, etc. El IDS no solo analiza qué tipo de tráfico es, sino que también revisa el contenido y su comportamiento.
 
 Normalmente esta herramienta se integra con un firewall. El detector de intrusos es incapaz de detener los ataques por sí solo, excepto los que trabajan conjuntamente en un dispositivo de puerta de enlace con funcionalidad de firewall, convirtiéndose en una herramienta muy poderosa ya que se une la inteligencia del IDS y el poder de bloqueo del firewall, al ser el punto donde forzosamente deben pasar los paquetes y pueden ser bloqueados antes de penetrar en la red.
 
