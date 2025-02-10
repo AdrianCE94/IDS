@@ -135,11 +135,10 @@ Cuando ejecutas Snort en modo monitor se queda en primer plano. Hay varias forma
 
 - **Crear un servicio**
  
-  ```bash
-  sudo nano /etc/systemd/system/snort-ids.service
-  ```
-  ```bash
-  [Unit]
+```bash
+sudo nano /etc/systemd/system/snort-ids.service
+
+[Unit]
 Description=Snort IDS Custom Service
 After=network.target
 
