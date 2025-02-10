@@ -27,7 +27,9 @@ Los IDS se implementan de varias maneras, como:
 ## Snort vs Suricata
 
 ### Snort
-![snort](/img/snort.png)
+<p align="center">
+  <img src="/img/snort.png" alt="suricata" width="300">
+</p>
 
 **Snort** es un Sistema de Detección y Prevención de Intrusos (IDS/IPS) basado en firmas, desarrollado por Cisco. Se usa para analizar paquetes de red en tiempo real y detectar amenazas mediante reglas personalizadas. Es ampliamente utilizado en redes pequeñas y medianas debido a su facilidad de uso.
 ### Suricata
