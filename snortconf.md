@@ -72,23 +72,12 @@ sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
 ```
 📌 Nota: Reemplaza eth0 con el nombre del adaptador de red que corresponda. (`ip a`)
 
-## Logs
+## 🎯 Logs
 Para ver los logs de Snort, puedes usar los los siguientes comandos:
 ```bash
 sudo tail -f /var/log/snort/snort.alert.fast #final del archivo
 cat /var/log/snort/snort.alert.fast
 ```
-
-## 🎯 Configurar logs personalizados
-
-```bash
-sudo nano /etc/snort/snort.conf
-```
-Busca la línea:
-`var LOG_DIR /var/log/snort`
-y cámbiala si deseas otro directorio.
-
-
 # Como Probar Snort
 
 Una vez que hayas configurado Snort, puedes probar su funcionadad con un ataque de intrusión de red. Para ello, puedes usar las siguientes sentencias en la terminal:
