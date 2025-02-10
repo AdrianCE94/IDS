@@ -87,7 +87,7 @@ Si queremos un area determinada de nuestro servidor web por ejemplo,
 cd /var/www/html
 sudo mkdir admin
 cd admin
-echo "<html><h1>Bienvenido a la administración de nuestro servidor, estas visitando un directorio que no debes visitar, seras detectado por el IDS</h1></html>" > index.html
+echo "<html><h1>Bienvenido a la administración de nuestro servidor, estas visitando un directorio que no debes visitar, seras detectado por el IDS</h1></html>" | sudo tee /var/www/html/admin/index.html > /dev/null
 ```
 
 ```bash		
