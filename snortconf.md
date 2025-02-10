@@ -143,7 +143,7 @@ Cuando ejecutas Snort en modo monitor se queda en primer plano. Hay varias forma
     Description=Snort NIDS Daemon
     After=network.target
 
-     [Service]
+    [Service]
     [Unit]
     Description=Snort IDS Custom Service
     After=network.target
