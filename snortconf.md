@@ -136,31 +136,39 @@ Cuando ejecutas Snort en modo monitor se queda en primer plano. Hay varias forma
 - **Crear un servicio**
  
   ```bash
-  sudo nano /etc/systemd/system/snort.service
+  sudo nano /etc/systemd/system/snort-ids.service
   ```
   ```bash
     [Unit]
     Description=Snort NIDS Daemon
     After=network.target
 
+     [Service]
+    [Unit]
+    Description=Snort IDS Custom Service
+    After=network.target
+
     [Service]
     Type=simple
-    ExecStart=/usr/sbin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0
+    User=snort
+    Group=snort
+    ExecStart=/usr/sbin/snort -q \
+        -u snort \
+        -g snort \
+        -c /etc/snort/snort.conf \
+        -i eth0 \
+        -D \
+        -l /var/log/snort
     Restart=always
+    RestartSec=70
+    LimitNOFILE=65535
 
     [Install]
     WantedBy=multi-user.target
-    ````
+  ```
     ```bash
-    # Recargar servicios
     sudo systemctl daemon-reload
-
-    # Habilitar el servicio
-    sudo systemctl enable snort
-
-    # Iniciar el servicio
-    sudo systemctl start snort
-
-    # Verificar estado
-    sudo systemctl status snort
+    sudo systemctl enable snort-ids
+    sudo systemctl start snort-ids
+    sudo systemctl status snort-ids
     ```
