@@ -1,12 +1,10 @@
 # IDS (Intrusion Detection System)
-
+![schema](/img/schema.png)
 ## ¿Qué es un IDS?
 
 Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
 
-<p align="center">
-  <img src="/img/schema.png" alt="schema" width="300">
-</p>
+
 ## ¿Cómo funciona un IDS?
 
 Un IDS funciona analizando los datos que se envían a través de la red, y detectando posibles ataques. Esto puede hacerse de varias maneras, como analizar el tráfico de red, analizar los paquetes de datos, o analizar el contenido de los archivos.
