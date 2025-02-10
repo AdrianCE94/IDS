@@ -2,11 +2,18 @@
 
 ## ¿Qué es un IDS?
 
-<p align="right">
-  <img src="/img/schema.png" alt="Esquema IDS" width="400">
-</p>
+<table>
+  <tr>
+    <td>
+      <img src="/img/schema.png" alt="Esquema IDS" width="400">
+    </td>
+    <td>
+    Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
+    </td>
+  </tr>
+</table>
 
-Un IDS es un sistema de detección de intrusiones. Es un programa que detecta posibles ataques en un sistema, como una intrusión de datos, una intrusión de servicios, una intrusión de red, etc.
+
 
 
 ## ¿Cómo funciona un IDS?
