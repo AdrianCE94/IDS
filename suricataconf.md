@@ -68,11 +68,51 @@ sudo cat /var/log/suricata/suricata.log
 ```
 
 # :page_with_curl: Añadir nuevas reglas personalizadas
+
 ```bash	
 alert tcp any any -> any 80 (msg:"[+] OJO TRAFICO HTTP detectado"; sid:1000002; rev:1;)
 ```
+
 ```bash		
 alert tcp any any -> any 22 (msg:"[+] OJO TRAFICO SSH detectado"; sid:1000003; rev:1;)
 ```
 
+```bash		
+alert tcp any any -> any 21 (msg:"[+] OJO TRAFICO FTP detectado"; sid:1000004; rev:1;)
+```
 
+Si queremos un area determinada de nuestro servidor web por ejemplo,
+```bash			
+cd /var/www/html
+sudo mkdir admin
+cd admin
+echo "<html><h1>Bienvenido a la administración de nuestro servidor, estas visitando un directorio que no debes visitar, seras detectado por el IDS</h1></html>" > index.html
+```
+
+```bash		
+alert http any any -> any 80 (msg:"[+] OJO ACCESO A CONTENIDO PRIVADO "; content:"/admin"; http_uri; sid:1000005; rev:1;)
+```
+
+```bash
+alert tcp any any -> any any (content: "youtube" msg:"[+] OJO ACCESO A YOUTUBE"; sid:1000006; rev:1;)
+```
+
+```bash
+alert tcp any any -> any any (mg:"[+] OJO TE ESTAN VIENDO LOS PUERTOS"; flags:S; threshold: type both, track by_src, count 20 seconds 3; sid:1000007; rev:1;)
+```
+# Comprobar Suricata
+Simplemente basta con hacer ping ip_servidor, acceso a algun cotenido del servidor web , acceso por ssh, acceso por ftp, y ver si aparecen los logs de Suricata.
+
+Para nmap podemos usar el siguiente comando:
+```bash
+sudo nmap -p- -sS -sCV -T4 -Pn -n -vvv ip_servidor
+```
+
+>[!NOTE]
+>Desde el punto de vista de la ciberseguridad,Suricata es una herramienta que se utiliza para detectar posibles ataques,pero si usamos bien nmapdriamos optimizarlo para saltarnos esta norma y no ser detectados. 
+
+```bash
+sudo nmap -sS -Pn -T1 --scan-delay 500ms --max-retries 1 --max-scan-delay 1000ms -f -p- ip_servidor
+```
+
+Aqui minimizamos el tiempo de escaneo y la cantidad de intentos de conexión y reducimos el ruido de nmap.Nos va a ir mas lentop el escaneo, pero vamos a ser indetectables para Suricata.
