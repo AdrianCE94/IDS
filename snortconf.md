@@ -17,7 +17,7 @@ sudo apt install snort -y
 > [!WARNING]
 > Durante la instalación, te pedirá configurar la IP de la máquina. Puedes ingresar la IP privada de la instancia o el rango de red en el que estará monitoreando tráfico.
 
-Si no lo introduces en este paso, puedes editarlo más tarde en la configuración -->
+Si no lo introduces en este paso, puedes editarlo más tarde en la configuración
 
 ```bash
 sudo nano /etc/snort/snort.conf
@@ -34,6 +34,7 @@ Edita el archivo de reglas locales de Snort:
 sudo nano /etc/snort/rules/local.rules
 ```
 Aquí puedes agregar reglas personalizadas para detectar tráfico específico. Por ejemplo, 
+
 ```bash
 # FTP
 alert tcp any any -> any 21 (msg:"Intento de acceso FTP detectado"; sid:1000001; rev:1;)
