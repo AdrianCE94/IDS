@@ -27,11 +27,13 @@ Los IDS se implementan de varias maneras, como:
 ## Snort vs Suricata
 
 ### Snort
-![suricata](/img/snort.png)
+![snort](/img/snort.png)
 
 **Snort** es un Sistema de Detección y Prevención de Intrusos (IDS/IPS) basado en firmas, desarrollado por Cisco. Se usa para analizar paquetes de red en tiempo real y detectar amenazas mediante reglas personalizadas. Es ampliamente utilizado en redes pequeñas y medianas debido a su facilidad de uso.
 ### Suricata
-![suricata](/img/suricata.png)
+<p align="center">
+  <img src="/img/suricata.png" alt="suricata" width="300">
+</p>
 Suricata es un IDS/IPS de código abierto desarrollado por Open Information Security Foundation (OISF). Se diferencia de Snort por su capacidad multihilo, análisis profundo de paquetes (DPI) y compatibilidad con múltiples protocolos. Es ideal para redes con alto tráfico y para integración con herramientas de análisis como Elasticsearch y Kibana.
 
 ## Diferencias entre Snort y Suricata
