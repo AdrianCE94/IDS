@@ -157,3 +157,7 @@ sudo systemctl enable snort-ids
 sudo systemctl start snort-ids
 sudo systemctl status snort-ids
  ```
+
+para comprobar que el servicio esta corriendo , podemos hacer nmap  y los logs se registraran
+# Para ver las alertas en tiempo real mientras se generan
+sudo tail -f /var/log/snort/snort.alert.fast
