@@ -98,8 +98,13 @@ alert tcp any any -> any any (content: "youtube" msg:"[+] OJO ACCESO A YOUTUBE";
 ```
 
 ```bash
-alert tcp any any -> any any (mg:"[+] OJO TE ESTAN VIENDO LOS PUERTOS"; flags:S; threshold: type both, track by_src, count 20 seconds 3; sid:1000007; rev:1;)
+alert tcp any any -> any any (msg:"[+] OJO TE ESTAN VIENDO LOS PUERTOS"; flags:S; threshold: type both, track by_src, count 20, seconds 3; sid:1000007; rev:1;)
 ```
+
+```bash
+alert tcp any any -> any 22 (msg:"[+] OJO Múltiples intentos de acceso SSH detectados"; flow:to_server, established; content:"Failed password"; sid:1000008; rev:1;)
+```
+
 # Comprobar Suricata
 Simplemente basta con hacer ping ip_servidor, acceso a algun cotenido del servidor web , acceso por ssh, acceso por ftp, y ver si aparecen los logs de Suricata.
 
@@ -116,3 +121,9 @@ sudo nmap -sS -Pn -T1 --scan-delay 500ms --max-retries 1 --max-scan-delay 1000ms
 ```
 
 Aqui maximizamos el tiempo de escaneo y la cantidad de intentos de conexión y reducimos el ruido de nmap. Nos va a ir mas lento el escaneo, pero vamos a ser indetectables para Suricata.
+
+
+Despues de añadir todas las reglas, recuerda que debes Guardamos los cambios y reiniciar Suricata.
+```bash
+sudo systemctl restart suricata
+```
