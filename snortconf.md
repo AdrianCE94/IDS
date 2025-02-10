@@ -75,8 +75,8 @@ sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
 ## Logs
 Para ver los logs de Snort, puedes usar los los siguientes comandos:
 ```bash
-sudo tail -f /var/log/snort/alert #final del archivo
-sudo cat /var/log/snort/alert
+sudo tail -f /var/log/snort/snort.alert.fast #final del archivo
+cat /var/log/snort/snort.alert.fast
 ```
 
 ## 🎯 Configurar logs personalizados
