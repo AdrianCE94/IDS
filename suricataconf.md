@@ -95,7 +95,7 @@ alert http any any -> any 80 (msg:"[+] OJO ACCESO A CONTENIDO PRIVADO "; content
 ```
 
 ```bash
-alert tcp any any -> any any (content: "youtube" msg:"[+] OJO ACCESO A YOUTUBE"; sid:1000006; rev:1;)
+alert tls any any -> any any (msg:"[+] Acceso a sitio no autorizado"; tls.sni; content:"facebook"; sid:1000006; rev:1;)
 ```
 
 ```bash
@@ -109,6 +109,21 @@ alert tcp any any -> any 22 (msg:"[+] OJO Múltiples intentos de acceso SSH dete
 # Comprobar Suricata
 Simplemente basta con hacer ping ip_servidor, acceso a algun cotenido del servidor web , acceso por ssh, acceso por ftp, y ver si aparecen los logs de Suricata.
 
+Para probar el acceso a un sitio no autorizado que el sysadmin quiere controlar, en la rule con el id 1000006, podemos probar con curl -k dominio-vetado.com si no tenemos entorno gráfico o directamente buscarlo en el navegador. Imaginemos que queremos controlar que nuestros usuarios no visiten redes sociales, podriamos crear otro fichero dominios-vetados.rules y agregariamos por ejemplo:
+
+```bash
+alert tls any any -> any any (msg:"[+] Acceso a Facebook detectado"; tls.sni; content:"facebook.com"; sid:2000001; rev:1;)
+alert tls any any -> any any (msg:"[+] Acceso a Twitter detectado"; tls.sni; content:"twitter.com"; sid:2000002; rev:1;)
+alert tls any any -> any any (msg:"[+] Acceso a TikTok detectado"; tls.sni; content:"tiktok.com"; sid:2000003; rev:1;)
+```
+y Actualizar Suricata para que use este archivo En `/etc/suricata/suricata.yaml`, busca la sección rule-files: y agrega la nueva regla:
+
+```bash
+default-rule-path: /usr/share/suricata/rules
+rules-files:
+  - misreglas.rules
+  - dominios-prohibidos.rules
+```
 Para nmap podemos usar el siguiente comando:
 ```bash
 sudo nmap -p- -sS -sCV -T4 -Pn -n -vvv ip_servidor
