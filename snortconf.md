@@ -1,8 +1,12 @@
 # Configuración de Snort en Ubuntu
 ![ids](/img/ids.png)
-## Instalación de Snort
+
 > [!TIP]
 >Las reglas personalizadas para snort se encuentran en el archivo `local.rules` de este repositorio.Puedes usar el archivo para probar las reglas antes de añadirlas a la configuración.
+
+
+## Instalación de Snort
+
 
 ```bash
 sudo apt update
