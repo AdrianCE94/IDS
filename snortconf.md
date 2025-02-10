@@ -160,4 +160,44 @@ sudo systemctl status snort-ids
 
 para comprobar que el servicio esta corriendo , podemos hacer nmap  y los logs se registraran
 # Para ver las alertas en tiempo real mientras se generan
+```bash
 sudo tail -f /var/log/snort/snort.alert.fast
+```
+# creando un script para automatizar el monitoreo
+## Crear el script
+```bash	
+sudo nano /usr/local/bin/snort-alerts.sh
+#!/bin/bash
+
+# Obtener el directorio home del usuario actual
+USER_HOME=$HOME
+
+# Crear directorio si no existe
+LOG_DIR="$USER_HOME/snort_logs"
+mkdir -p $LOG_DIR
+
+# Obtener fecha y hora para el nombre del archivo
+DATE=$(date +"%Y-%m-%d")
+TIME=$(date +"%H:%M:%S")
+
+# Nombre del archivo de log
+LOG_FILE="$LOG_DIR/snort_alertas_$DATE.txt"
+
+# Añadir las alertas con timestamp
+echo "=== Alertas de Snort - $DATE $TIME ===" >> "$LOG_FILE"
+tail -n 50 /var/log/snort/snort.alert.fast >> "$LOG_FILE"
+echo "----------------------------------------" >> "$LOG_FILE"
+```
+
+```bash	
+# Dar permisos
+sudo chmod +x /usr/local/bin/snort-alerts.sh
+```
+```bash	
+#Editar crontab (como usuario, no como root)
+crontab -e
+```
+```bash	
+# Añadir la tarea
+* * * * * /usr/local/bin/snort-alerts.sh
+```
