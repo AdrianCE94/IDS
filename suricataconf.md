@@ -11,6 +11,7 @@ Codename:       noble
 
 ```bash
 sudo apt update
+sudo apt install software-properties-common
 sudo add-apt-repository ppa:oisf/suricata-stable
 # press enter
 sudo apt install suricata -y
