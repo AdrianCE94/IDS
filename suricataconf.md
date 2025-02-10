@@ -49,7 +49,7 @@ Para cargar la regla en suricata, ejecutamos el siguiente comando:
 ```bash
 sudo nano /etc/suricata/suricata.yaml
 ```
-`Ctrl+w` y buscamos `rules-files` para cambair la ruta donde se cargan las reglas y la regla que queremos cargar.
+`Ctrl+w` y buscamos `default-rule-path:` para cambiar la ruta donde se cargan las reglas y la regla que queremos cargar.
 
 ```bash
 default-rule-path: /usr/share/suricata/rules
