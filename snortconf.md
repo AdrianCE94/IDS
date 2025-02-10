@@ -139,7 +139,7 @@ Cuando ejecutas Snort en modo monitor se queda en primer plano. Hay varias forma
   sudo nano /etc/systemd/system/snort.service
   ```
   ```bash
-      [Unit]
+    [Unit]
     Description=Snort NIDS Daemon
     After=network.target
 
