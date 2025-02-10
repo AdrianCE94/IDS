@@ -10,7 +10,15 @@ sudo apt install snort -y
 > [!WARNING]
 > Durante la instalación, te pedirá configurar la IP de la máquina. Puedes ingresar la IP privada de la instancia o el rango de red en el que estará monitoreando tráfico.
 
-Si no lo introduces en este paso, puedes editarlo más tarde en la configuración.
+Si no lo introduces en este paso, puedes editarlo más tarde en la configuración -->
+
+````bash
+sudo nano /etc/snort/snort.conf
+
+# Configura tu red
+ipvar HOME_NET [192.168.1.0/24]  # Ajusta a tu rango de red
+ipvar EXTERNAL_NET !$HOME_NET
+```
 
 ## Configuración de Reglas
 Edita el archivo de reglas locales de Snort:
@@ -66,4 +74,4 @@ Busca la línea:
 `var LOG_DIR /var/log/snort`
 y cámbiala si deseas otro directorio.
 
-En este Repositorio puedes encontrar el fichero .rules que contiene las reglas de Snort que se utilizan en este proyecto.
+Las reglas personalizadas para snort se encuentran en el archivo `local.rules` de este repositorio.Puedes usar el archivo para probar las reglas antes de añadirlas a la configuración.
