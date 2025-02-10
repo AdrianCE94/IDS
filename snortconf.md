@@ -145,18 +145,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=snort
-Group=snort
-ExecStart=/usr/sbin/snort -q \
-    -u snort \
-    -g snort \
-    -c /etc/snort/snort.conf \
-    -i eth0 \
-    -D \
-    -l /var/log/snort
+ExecStart=/usr/sbin/snort -A console -q -c /etc/snort/snort.conf -i enX0
 Restart=always
-RestartSec=70
-LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
