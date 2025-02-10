@@ -1,3 +1,4 @@
+# reglas mejoradas y mas especificas
 # FTP - Mejorada para detectar intentos de fuerza bruta
 alert tcp any any -> $HOME_NET 21 (msg:"Intento de fuerza bruta FTP"; flow:established,to_server; content:"USER"; nocase; detection_filter:track by_src, count 5, seconds 30; sid:1000001; rev:2;)
 
