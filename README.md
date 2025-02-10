@@ -58,5 +58,5 @@ Suricata es un IDS/IPS de código abierto desarrollado por Open Information Secu
 | **Requerimientos de hardware** | Menos exigente | Más consumo de CPU/RAM |
 
 **Conclusión:**  
-- **Snort** es ideal para redes pequeñas y medianas donde se necesite una implementación rápida y sencilla.  
+- 🛠 **Snort** es ideal para redes pequeñas y medianas donde se necesite una implementación rápida y sencilla.  
 - **Suricata** es mejor para entornos empresariales con alto tráfico y necesidad de análisis avanzado.  
