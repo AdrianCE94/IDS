@@ -88,7 +88,7 @@ y cámbiala si deseas otro directorio.
 Una vez que hayas configurado Snort, puedes probar su funcionadad con un ataque de intrusión de red. Para ello, puedes usar las siguientes sentencias en la terminal:
 
 > [!NOTE]
-> NO LO OLVIDES REINICIAR EL SERVICIO,`sudo systemctl restart snort`
+> NO LO OLVIDES REINICIAR EL SERVICIO, `sudo systemctl restart snort`
 
 ## En otra terminal o máquina
 ```bash	
@@ -100,7 +100,9 @@ sudo apt install nmap
 nmap <IP-de-tu-máquina-con-snort>
 ```
 ## Intenta conectarte varias veces con una contraseña incorrecta
+```bash	
 ssh usuario@<IP-de-tu-máquina-con-snort>
+```	
 ## Captura las alertas
 ```bash
 sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
