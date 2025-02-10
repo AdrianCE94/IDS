@@ -140,7 +140,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/snort -A console -q -c /etc/snort/snort.conf -i enX0
+ExecStart=/usr/sbin/snort -A console -q -c /etc/snort/snort.conf -i enX0 #sustituir por tu tarjeta de red
 Restart=always
 
 [Install]
@@ -162,6 +162,7 @@ sudo tail -f /var/log/snort/snort.alert.fast
 ## Crear el script
 ```bash	
 sudo nano /usr/local/bin/snort-alerts.sh
+
 #!/bin/bash
 
 # Obtener el directorio home del usuario actual
