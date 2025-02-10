@@ -84,6 +84,6 @@ Los IDS detectan diferentes tipos de ataques, como:
 
 
 # Configuración
-[Como configurar snort](snortconf.md)
+[Como configurar SNORT](snortconf.md)
 
-[Como configurar suritca](suricataconf.md)
+[Como configurar SURICATA](suricataconf.md)
