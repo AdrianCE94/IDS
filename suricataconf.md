@@ -143,4 +143,4 @@ Despues de añadir todas las reglas, recuerda que debes Guardamos los cambios y 
 ```bash
 sudo systemctl restart suricata
 ```
-Puedes utilizar el fichero `misreglas.rules` y el fichero de configuración de suricata 'suricata.yaml' de este repositorio para probar y securizar tu repositorio
+Puedes utilizar el fichero `misreglas.rules` y el fichero de configuración de suricata `ricata.yaml` que se encuentra en este repositorio para probar y securizar tu repositorio
