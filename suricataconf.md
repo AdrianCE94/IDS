@@ -19,7 +19,7 @@ sudo systemctl restart suricata
 # Configuración de Suricata
 para configurar Suricata, abre el archivo de configuración en el siguiente directorio:
 ```bash
-sudonano /etc/suricata/suricata.yaml
+sudo nano /etc/suricata/suricata.yaml
 ```
 Con `ctrl+w`, buscamos `eht0` para configurar nuestra interface de red ya que esta es la que viene por defecto y la cambiaremos a la que tenemos.
 
