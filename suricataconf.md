@@ -173,55 +173,6 @@ Para automatizar el monitoreo de Suricata, podemos crear un script que se ejecut
 Si hay una nueva alerta en fast.log, el script genera Alerta.txt y lo manda por Telegram.
 Si no hay cambios en fast.log, el script simplemente sigue monitoreando en espera de nuevas alertas.
 
-```python
-import os
-import requests
-from datetime import datetime
-
-# 📌 Configuración
-LOG_FILE = "/var/log/suricata/fast.log"
-MENSAJE_LOG = "/var/log/suricata/Alerta.txt"
-BACKUP_DIR = "/var/log/suricata/copias_fast"
-
-TELEGRAM_BOT_TOKEN = "Escribe-tu-token"
-CHAT_ID = "Escribe-tu-chat-id"
-TELEGRAM_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
-
-def obtener_ultimas_alertas():
-    """Lee el contenido del log de Suricata"""
-    try:
-        with open(LOG_FILE, "r") as f:
-            return f.readlines()
-    except FileNotFoundError:
-        return []
-
-def enviar_alerta(mensaje):
-    """Envía el mensaje a Telegram"""
-    with open(MENSAJE_LOG, "w") as f:
-        f.writelines(mensaje)
-
-    with open(MENSAJE_LOG, "rb") as file:
-        requests.post(TELEGRAM_URL, data={"chat_id": CHAT_ID, "caption": "🚨 Nuevas alertas de Suricata"}, files={"document": file})
-
-def hacer_backup():
-    """Copia el log y lo limpia"""
-    fecha_actual = datetime.now().strftime("%Y-%m-%d")
-    os.makedirs(BACKUP_DIR, exist_ok=True)
-    os.system(f"cp {LOG_FILE} {BACKUP_DIR}/copia.{fecha_actual}")
-    open(LOG_FILE, "w").close()  # Limpiar el log después del backup
-
-def main():
-    alertas = obtener_ultimas_alertas()
-    if alertas:
-        enviar_alerta(alertas)
-        hacer_backup()
-        print("✅ Alerta enviada y log respaldado.")
-    else:
-        print("🔍 No hay nuevas alertas.")
-
-if __name__ == "__main__":
-    main()
-```
 
 ## Montar Script
 ```bash
@@ -233,35 +184,38 @@ pip3 install requests
  nano /usr/local/bin/suricata-monitor.py
  chmod +x /usr/local/bin/suricata-monitor.py
 ```
+
+ el script lo puedes encontrar en este repositorio el que tiene el nombre monitorSuri.py
+
 ## Crear Servicio
-```bash
-nano /etc/systemd/system/suricata-monitor.service
+
+```bash		
+sudo nano /etc/systemd/system/suricata-monitor.service
 ```
-```bash
+```bash	
 [Unit]
-Description=Servicio de alerta Suricata por Telegram
+Description=Suricata Alerts Monitor
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /ruta/del/script/suricata_alerta.py
+ExecStart=/usr/bin/python3 /usr/local/bin/suricata-monitor.py
 Restart=always
-User=tu_usuario
-Group=tu_grupo
-WorkingDirectory=/ruta/del/script/
-StandardOutput=journal
-StandardError=journal
+User=root
+Group=root
+Environment="PYTHONUNBUFFERED=1"
 
 [Install]
 WantedBy=multi-user.target
-```
-### Habilitar y iniciar servicio
-```bash
+ ```
+```bash	
 sudo systemctl daemon-reload
 sudo systemctl enable suricata-monitor
 sudo systemctl start suricata-monitor
-sudo systemctl status suricata-monitor
-journalctl -u suricata_alerta.service #ver logs
-```
+systemctl status suricata-monitor
+journalctl -u suricata-monitor -f
+ ```
+
+
 ### crear Bot para Telegram y obtener id
 
 1. Crear un bot en Telegram con botfather
