@@ -143,7 +143,7 @@ Despues de añadir todas las reglas, recuerda que debes Guardamos los cambios y 
 ```bash
 sudo systemctl restart suricata
 ```
-Puedes utilizar el fichero `misreglas.rules` y el fichero de configuración de suricata `ricata.yaml` que se encuentra en este repositorio para probar y securizar tu repositorio
+Puedes utilizar el fichero `misreglas.rules` y el fichero de configuración de suricata `ricata.yaml` que se encuentra en este repositorio en la carpeta `files` para probar y securizar tu sistema.
 
 # Script para automatizar el monitoreo
 
@@ -199,14 +199,10 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python3 /usr/local/bin/suricata-monitor.py
-<<<<<<< HEAD
 Restart=always
 User=root
 Group=root
 Environment="PYTHONUNBUFFERED=1"
-=======
-Restart=on-failure
->>>>>>> afd7d777e91fa59ee5ac79111a96802d1b6c90c2
 
 [Install]
 WantedBy=multi-user.target
@@ -215,19 +211,10 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable suricata-monitor
 sudo systemctl start suricata-monitor
-<<<<<<< HEAD
 systemctl status suricata-monitor
 journalctl -u suricata-monitor -f
  ```
-
-
 ### crear Bot para Telegram y obtener id
-=======
-sudo systemctl status suricata-monitor
-journalctl -u suricata_alerta.service #ver logs
-```
-### Crear Bot para Telegram y obtener id
->>>>>>> afd7d777e91fa59ee5ac79111a96802d1b6c90c2
 
 1. Crear un bot en Telegram con botfather
 2. Obtener el token
