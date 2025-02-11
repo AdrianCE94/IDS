@@ -8,7 +8,7 @@ Codename:       noble
 ![ids](/img/piggi.png)
 
 > [!TIP]
->Las reglas personalizadas para snort se encuentran en el archivo `local.rules` de este repositorio.Puedes usar el archivo para probar las reglas antes de añadirlas a la configuración.
+>Las reglas personalizadas para snort se encuentran en el archivo `local.rules` de este repositorio en la carpeta `files`.Puedes usar el archivo para probar las reglas antes de añadirlas a la configuración.
 
 
 ## Instalación de Snort
