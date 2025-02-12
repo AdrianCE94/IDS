@@ -57,7 +57,7 @@ alert tcp any any -> $HOME_NET 80 (msg:"Acceso HTTP detectado en Apache"; sid:10
 # Nmap
 alert tcp any any -> any any (msg:"Posible escaneo de Nmap detectado"; flags:S; threshold:type threshold, track by_src, count 10, seconds 30; sid:1000005; rev:1;)
 ```
-
+Puedes usar el fichero local.rules que tienes en la carpeta files de este Repositorio
 Para validar la sintaxis de las reglas añadidas puedes ejecutar el siguiente comando:
 
 ```bash
