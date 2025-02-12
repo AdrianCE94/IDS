@@ -9,8 +9,8 @@ LOG_FILE = Path("/var/log/suricata/fast.log")
 MENSAJE_LOG_DIR = Path("/var/log/suricata")
 BACKUP_DIR = Path("/var/log/suricata/copias_fast")
 
-TELEGRAM_BOT_TOKEN = "7702373257:AAHCmpzh272ggS3WK47rKPEz4fHj6VtX2NM"
-CHAT_ID = "1016179117"
+TELEGRAM_BOT_TOKEN = "TOKEN_TELEGRAM_BOT"
+CHAT_ID = "-CHAT_ID"
 TELEGRAM_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
 
 def obtener_ultimas_alertas():
