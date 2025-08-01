@@ -1,0 +1,4 @@
+log_file: /var/log/suricata/fast.log
+backup_dir: /var/log/suricata/backups
+telegram_token: "TOKEN_TELEGRAM_BOT"
+chat_id: "CHAT_ID"
