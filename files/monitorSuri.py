@@ -52,7 +52,8 @@ def hacer_backup():
     """Copia el log y lo limpia"""
     try:
         BACKUP_DIR.mkdir(parents=True, exist_ok=True)  # Crear el directorio de backup si no existe
-        fecha_actual = datetime.now().strftime("%Y-%m-%d")
+        # Usar timestamp completo para evitar sobrescribir backups anteriores
+        fecha_actual = datetime.now().strftime("%Y-%m-%d_%H%M%S")
         backup_file = BACKUP_DIR / f"copia.{fecha_actual}.log"
 
         # Copiar el archivo de log
